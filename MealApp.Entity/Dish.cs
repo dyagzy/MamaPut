@@ -35,6 +35,7 @@ namespace MealApp.Entity
         public int CustomerId { get; set; }
 
         public Customer Customer { get; set; }
+        public IEnumerable<DishCook> DishCooks { get; set; }
 
     }
 }

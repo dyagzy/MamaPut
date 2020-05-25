@@ -10,8 +10,7 @@ namespace MealApp.Entity
     {
         public int Id { get; set; }
 
-        [Required]
-        public int CustomerId { get; set; }
+    
         [Required, MaxLength(50)]
         public string FirstName { get; set; }
         [Required, MaxLength(50)]

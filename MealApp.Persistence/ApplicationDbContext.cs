@@ -17,6 +17,7 @@ namespace MealApp2.Persistence
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Cook> Cooks { get; set; }
         public DbSet<Dish> Dishes { get; set; }
+        public DbSet<DishCook> DishCooks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,7 +35,23 @@ namespace MealApp2.Persistence
                 .HasMany(c => c.Dishes)
                 .WithOne(d => d.Cook);
 
+            modelBuilder.Entity<Dish>()
+                .HasOne(d => d.Cook)
+                .WithMany(c => c.Dishes);
+
+
+            modelBuilder.Entity<DishCook>()
+                .HasKey(dc => new { dc.DishId, dc.CookId });
+
+            modelBuilder.Entity<Customer>()
+                .HasOne(e => e.Cook)
+                .WithMany(c => c.Customers);
+            modelBuilder.Entity<Customer>()
+                .HasMany(c => c.Dishes)
+                .WithOne(d => d.Customer);
+
         }
+        
 
     }
 }

@@ -8,8 +8,8 @@ namespace MealApp.Entity
     public class Cook
     {
         public int Id { get; set; }
-        [Required]
-        public int CookId { get; set; }
+        
+        
         [Required]
         public string CookName { get; set; }
         public string Email { get; set; }
@@ -19,6 +19,7 @@ namespace MealApp.Entity
         public byte[] RowVersion { get; set; }
         public IEnumerable<Customer> Customers { get; set; }
         public IEnumerable<Dish> Dishes { get; set; }
+        public IEnumerable<DishCook> DishCooks { get; set; }
         public string ImageUrl { get; set; }
     }
 }
