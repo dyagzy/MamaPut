@@ -16,29 +16,36 @@ namespace MealApp.Service.Implementation
         {
             _context = context;
         }
-        public Task CreateAsync(Cook cook)
+        public async Task CreateAsync(Cook cook)
         {
-            throw new NotImplementedException();
+           await  _context.Cooks.AddAsync(cook);
+           await  _context.SaveChangesAsync();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var cook = GetById(id);
+            _context.Remove(cook);
+           await  _context.SaveChangesAsync();
         }
+       
 
         public IEnumerable<Cook> GetAll() => _context.Cooks.OrderBy(c => c.CookName);
 
         public Cook GetById(int CookId) => _context.Cooks.FirstOrDefault(c => c.Id == CookId);
        
 
-        public Task UpdateAsync(int id)
+        public async  Task UpdateAsync(int id)
         {
-            throw new NotImplementedException();
+            var cook = GetById(id);
+            _context.Update(cook);
+            await _context.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(Cook cook)
+        public async Task UpdateAsync(Cook cook)
         {
-            throw new NotImplementedException();
+            _context.Update(cook);
+            await _context.SaveChangesAsync();
         }
     }
 }

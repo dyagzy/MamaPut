@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MealApp.Service
 {
-    public interface ICustomer
+    public interface ICustomerService
     {
         IEnumerable<Customer> GetAll();
-        Customer GetById(int id);
-        Task CreateAsync();
+        Customer GetById(int CustomerId);
+        Task CreateAsync(Customer customer);
         Task UpdateAsync(int id);
         Task UpdateAsync(Customer customer);
         Task Delete(int id);
