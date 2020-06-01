@@ -15,15 +15,29 @@ namespace MealApp.Entity
         public string FirstName { get; set; }
         [Required, MaxLength(50)]
         public string LastName { get; set; }
+        [Display(Name= "Customer Number")]
 
         public string CustomerNumber { get; set; }
         [Required]
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string ImageUrl { get; set; }
 
         [Required, MaxLength(150)]
         public string Address { get; set; }
+        [Display(Name = "Date Joined")]
+        public DateTime DateJoined { get; set; }
         public DateTime DOB { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return FirstName   +  LastName;
+
+            }
+
+        }
+
         public MealSize MealSize { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public DietRestriction DietRestriction { get; set; }

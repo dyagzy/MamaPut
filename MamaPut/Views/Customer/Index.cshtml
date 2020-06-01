@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CustomerIndexViewModel>
+
+@{ 
+    ViewBag.Title = "All Customers";
+}
+
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="index"></a>Home</li>
+                        <li class="breadcrumb-item active" aria-current ="page">Customer List</li>
+                    </ol>
+                </nav><br /><br /><br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <a class="btn btn-xs btn-outline-success float-md-right" asp-controller="Customer" asp-action="Create"> New Customer</a>
+                        <br />
+                        <br />
+                        <br />
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Full Name </th>
+                                    <th>Photo</th>
+                                    <th>Customer Number</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>DateJoined</th>
+                                    <th class="text-warning"> Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a asp-controller="Customer" asp-action="Detail" asp-route-id="@item.Id">@item.CustomerNumber</a>
+
+                                        </td>
+                                        
+                                        <td><img alt="image" src="@Url.Content(item.ImageUrl)" /></td>
+
+                                        <td>@item.FullName</td>
+
+                                        <td>@item.Phone</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.DateJoined</td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                            <a asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
