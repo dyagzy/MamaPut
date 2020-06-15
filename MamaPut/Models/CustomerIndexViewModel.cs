@@ -10,7 +10,6 @@ namespace MamaPut.Models
     {
         public int Id { get; set; }
 
-        
 
         public string CustomerNumber { get; set; }
         public DateTime DateJoined  { get; set; }
