@@ -46,6 +46,7 @@ namespace MamaPut.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CustomerCreateViewModel model)
         {
             if (ModelState.IsValid)
